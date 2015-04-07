@@ -103,6 +103,8 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 
+
+
 # Finder: disable animations
 #defaults write com.apple.finder DisableAllAnimations -bool true
 
@@ -200,10 +202,15 @@ defaults write com.apple.terminal StringEncodings -array 4
 
 
 #set iterm theme - may need to be enabled through the preferences after this
+MACPREP_DIR=`dirname $0`
+rsync -lv "$MACPREP_DIR/config/com.googlecode.iterm2.plist" ~/Library/Preferences/com.googlecode.iterm2.plist
+
 PREVIOUS_DIR=`pwd`
 cd ~
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
 open "iTerm2-Color-Schemes/schemes/DimmedMonokai.itermcolors"
+open "iTerm2-Color-Schemes/schemes/Monokai Soda.itermcolors"
+open "iTerm2-Color-Schemes/schemes/Dracula.itermcolors"
 git clone https://github.com/sickill/vim-monokai.git
 #enable monokai vim color
 mkdir -p .vim/colors
@@ -221,6 +228,9 @@ export CLICOLOR=1
 
 # Set colors to match iTerm2 Terminal Colors
 export TERM=xterm-256color
+
+# Set the bash prompt styling
+export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 5)\]\u\[$(tput setaf 6)\]@\[$(tput setaf 5)\]\h \[$(tput setaf 2)\]\W\[$(tput setaf 4)\]]\\$ \[$(tput sgr0)\]"
 EOF
 
 
@@ -262,6 +272,22 @@ defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -boo
 # Disable the all too sensitive backswipe on Magic Mouse
 defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+
+#---
+
+# Speed up Mission Control animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
 
 
 echo "--> Installing vim + tree..."
@@ -309,4 +335,5 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub nick@nas
 echo "--> Installing Maven"
 brew install maven
 
+echo "Java JDKs will need to be installed manually from Oracal"
 echo "Please reboot to apply changes..."
