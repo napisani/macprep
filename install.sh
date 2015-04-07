@@ -3,11 +3,13 @@
 
 echo "Please set a password for your user"
 #change password
-passwd
+#passwd
 
 #install xcode packages
 echo "--> installing xcode packages..."
 xcode-select --install
+
+read -p "continue after the install finishes [ENTER]"
 
 #install brew
 echo "--> installing homebrew..."
@@ -169,6 +171,7 @@ defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Add iOS Simulator to Launchpad
 sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app" "/Applications/iOS Simulator.app"
@@ -200,8 +203,18 @@ defaults write com.apple.terminal StringEncodings -array 4
 PREVIOUS_DIR=`pwd`
 cd ~
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
-open "~/iTerm2-Color-Schemes/schemes/DimmedMonokai.itermcolors"
+open "iTerm2-Color-Schemes/schemes/DimmedMonokai.itermcolors"
 cd "$PREVIOUS_DIR"
+
+cat <<EOF >> ~/.bash_profile
+
+# Set CLICOLOR if you want Ansi Colors in iTerm2 
+export CLICOLOR=1
+
+# Set colors to match iTerm2 Terminal Colors
+export TERM=xterm-256color
+EOF
+
 
 # Don’t display the annoying prompt when quitting iTerm
 defaults write com.googlecode.iterm2 PromptOnQuit -bool false
@@ -271,6 +284,18 @@ echo "--> Installing idea + webstorm IDEs..."
 brew cask install webstorm
 brew cask install intellij-idea
 
+echo "--> Installing vpn utilities"
+brew cask install tunnelblick
+brew cask install private-internet-access
 
+echo "--> Installing skype"
+brew cask install skype
+
+echo "--> Installing ssh-copy-id"
+brew install ssh-copy-id
+echo "--> Generating ssh keys"
+ssh-keygen
+echo "--> Copying key to NAS"
+ssh-copy-id -i ~/.ssh/id_rsa.pub nick@nas
 
 echo "Please reboot to apply changes..."
