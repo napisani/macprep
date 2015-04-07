@@ -306,4 +306,7 @@ ssh-keygen
 echo "--> Copying key to NAS"
 ssh-copy-id -i ~/.ssh/id_rsa.pub nick@nas
 
+echo "--> Installing Maven"
+brew install maven
+
 echo "Please reboot to apply changes..."
