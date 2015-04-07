@@ -199,11 +199,19 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 defaults write com.apple.terminal StringEncodings -array 4
 
 
-#set iterm theme
+#set iterm theme - may need to be enabled through the preferences after this
 PREVIOUS_DIR=`pwd`
 cd ~
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
 open "iTerm2-Color-Schemes/schemes/DimmedMonokai.itermcolors"
+git clone https://github.com/sickill/vim-monokai.git
+#enable monokai vim color
+mkdir -p .vim/colors
+cp vim-monokai/colors/monokai.vim .vim/colors/
+cat <<EOF >> .vimrc
+syntax enable
+colorscheme monokai
+EOF
 cd "$PREVIOUS_DIR"
 
 cat <<EOF >> ~/.bash_profile
