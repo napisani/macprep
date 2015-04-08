@@ -239,6 +239,13 @@ export TERM=xterm-256color
 export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 5)\]\u\[$(tput setaf 6)\]@\[$(tput setaf 5)\]\h \[$(tput setaf 2)\]\W\[$(tput setaf 4)\]]\\$ \[$(tput sgr0)\]"
 
 alias ls="ls --color=auto"
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 EOF
 
 
@@ -410,5 +417,9 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub nick@nas
 echo "--> Installing Maven"
 brew install maven
 
-echo "Java JDKs will need to be installed manually from Oracal"
+echo "--> Installing SVN"
+brew install svn
+
+echo "1. Java JDKs will need to be installed manually from Oracle"
+echo "2. go to system prefs -> keyboard -> shortcuts -> mission control -> change/uncheck move space left/right " 
 echo "Please reboot to apply changes..."
