@@ -1,5 +1,6 @@
 #!/bin/bash
 #Thank you to Mathias Bynens for defining the defaults within his dots repository.
+MACPREP_DIR=`dirname $0`
 
 echo "Please set a password for your user"
 #change password
@@ -206,7 +207,7 @@ defaults write com.apple.terminal StringEncodings -array 4
 
 
 #set iterm theme - may need to be enabled through the preferences after this
-MACPREP_DIR=`dirname $0`
+
 rsync -lv "$MACPREP_DIR/config/com.googlecode.iterm2.plist" ~/Library/Preferences/com.googlecode.iterm2.plist
 
 PREVIOUS_DIR=`pwd`
@@ -222,6 +223,7 @@ cp vim-monokai/colors/monokai.vim .vim/colors/
 cat <<EOF >> .vimrc
 syntax enable
 colorscheme monokai
+set backspace=indent,eol,start " backspace over everything in insert mode
 EOF
 cd "$PREVIOUS_DIR"
 
@@ -355,10 +357,13 @@ echo '"\e[1;5C": forward-word' >> ~/.inputrc
 
 
 # in zsh - allow ^ LEFT ARROW to skip backward and ^ RIGHT ARROW to skip forward
-echo "bindkey '^[[1;5D' forward-word" >> ~/.zshrc
-echo "bindkey '^[[1;5C' backward-word" >> ~/.zshrc
+echo "bindkey '^[[1;5C' forward-word" >> ~/.zshrc
+echo "bindkey '^[[1;5D' backward-word" >> ~/.zshrc
 
-
+echo "--> Installing Karabiner"
+brew cask install karabiner
+rsync -lv "$MACPREP_DIR/config/karabiner/private.xml" ~/Library/Application\ Support/Karabiner/private.xml
+sh "$MACPREP_DIR/config/karabiner/import_profile.sh"
 
 echo "--> Installing vim + tree..."
 brew install vim --override-system-vi
