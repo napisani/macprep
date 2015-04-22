@@ -370,6 +370,8 @@ echo "bindkey '^[[1;5D' backward-word" >> ~/.zshrc
 echo "--> Installing Karabiner"
 brew cask install karabiner
 rsync -lv "$MACPREP_DIR/config/karabiner/private.xml" ~/Library/Application\ Support/Karabiner/private.xml
+# This file was created initially by exporting karabiner profile using the following command:
+# /Applications/Karabiner.app/Contents/Library/bin/karabiner export > macprep/config/import-profile.sh
 sh "$MACPREP_DIR/config/karabiner/import_profile.sh"
 
 echo "--> Installing vim + tree..."

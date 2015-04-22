@@ -1,55 +1,19 @@
 <?xml version="1.0"?>
 <root>
-	<appdef>
-    <appname>IntelliJ_IDEA</appname>
-    <!--
-        Please modify bundle identifier for your environment.
-        You can confirm it by EventViewer.
-        https://pqrs.org/osx/karabiner/xml.html.en#appdef-steps
-    -->
-    <equal>com.jetbrains.intellij</equal>
-  </appdef>
-
-  <item>
-    <name>Disable all settings while you are using IntelliJ IDEA.</name>
-    <identifier>private.ignore_IDEA</identifier>
-    <only>IntelliJ_IDEA</only>
-    <autogen>__PassThrough__</autogen>
-  </item>
-
 <appdef>
-    <appname>IntelliJ_WEBSTORM</appname>
-    <!--
-        Please modify bundle identifier for your environment.
-        You can confirm it by EventViewer.
-        https://pqrs.org/osx/karabiner/xml.html.en#appdef-steps
-    -->
-    <equal>com.jetbrains.WebStorm</equal>
-  </appdef>
+    <appname>REMOTEDESKTOPCONNECTION</appname>
+    <equal>com.microsoft.rdc</equal>
+    <equal>com.microsoft.rdc.mac</equal>
+    <equal>net.sf.cord</equal>
+    <equal>com.thinomenon.RemoteDesktopConnection</equal>
+    <equal>com.itap-mobile.qmote</equal>
+    <equal>com.nulana.remotixmac</equal>
+    <equal>com.p5sys.jump.mac.viewer</equal>
 
-  <item>
-    <name>Disable all settings while you are using IntelliJ WebStorm.</name>
-    <identifier>private.ignore_WEBSTORM</identifier>
-    <only>IntelliJ_WEBSTORM</only>
-    <autogen>__PassThrough__</autogen>
-  </item>
-<appdef>
-    <appname>IntelliJ_ANDROID_STUDIO</appname>
-    <!--
-        Please modify bundle identifier for your environment.
-        You can confirm it by EventViewer.
-        https://pqrs.org/osx/karabiner/xml.html.en#appdef-steps
-    -->
+    <equal>com.jetbrains.intellij</equal>  
     <equal>com.google.android.studio</equal>
-  </appdef>
-
-  <item>
-    <name>Disable all settings while you are using Android Studio.</name>
-    <identifier>private.ignore_ANDROID_STUDIO</identifier>
-    <only>IntelliJ_ANDROID_STUDIO</only>
-    <autogen>__PassThrough__</autogen>
-  </item>
-
+    <equal>com.jetbrains.WebStorm</equal>
+</appdef>
 
 
 </root>
