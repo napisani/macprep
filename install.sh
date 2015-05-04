@@ -125,9 +125,7 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 #add host entry for my local nas box
-sudo -i
-echo "192.168.1.250 nas" >> /etc/hosts
-exit
+sudo echo "192.168.1.250 nas" >> /etc/hosts
 
 #----------------------------------------------------------------
 
@@ -369,6 +367,9 @@ echo "bindkey '^[[1;5D' backward-word" >> ~/.zshrc
 
 echo "--> Installing Karabiner"
 brew cask install karabiner
+open /Applications/Karabiner.app
+read -p "Press [Enter] once Karabiner is open..."
+
 rsync -lv "$MACPREP_DIR/config/karabiner/private.xml" ~/Library/Application\ Support/Karabiner/private.xml
 # This file was created initially by exporting karabiner profile using the following command:
 # /Applications/Karabiner.app/Contents/Library/bin/karabiner export > macprep/config/import-profile.sh
