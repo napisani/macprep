@@ -82,6 +82,21 @@ npm install yo -g
 npm install grunt-cli -g
 npm install gulp -g
 
+echo "--> installing go..."
+export GOPATH=$HOME/golang
+mkdir -p $HOME/golang
+mkdir -p $GOPATH/src/github.com/napisani
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+echo 'GOPATH=$HOME/golang' >> ~/.bash_profile
+echo 'GOROOT=/usr/local/opt/go/libexec' >> ~/.bash_profile
+echo 'PATH=$PATH:$GOPATH/bin' >> ~/.bash_profile
+echo 'PATH=$PATH:$GOROOT/bin' >> ~/.bash_profile
+brew install go
+brew install mercurial
+go get code.google.com/p/go.tools/cmd/godoc
+go get code.google.com/p/go.tools/cmd/vet
 
 
 echo "--> Customizing mac defaults..."
