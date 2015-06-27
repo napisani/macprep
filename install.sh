@@ -98,6 +98,9 @@ brew install mercurial
 go get code.google.com/p/go.tools/cmd/godoc
 go get code.google.com/p/go.tools/cmd/vet
 
+echo "--> install rsync..."
+brew install rsync
+
 
 echo "--> Customizing mac defaults..."
  #mac os customizations
