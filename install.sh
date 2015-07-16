@@ -227,7 +227,7 @@ defaults write com.apple.terminal StringEncodings -array 4
 rsync -lv "$MACPREP_DIR/config/com.googlecode.iterm2.plist" ~/Library/Preferences/com.googlecode.iterm2.plist
 
 PREVIOUS_DIR=`pwd`
-cd ~
+cd "$HOME"
 git clone https://github.com/mbadolato/iTerm2-Color-Schemes.git
 open "iTerm2-Color-Schemes/schemes/DimmedMonokai.itermcolors"
 open "iTerm2-Color-Schemes/schemes/Monokai Soda.itermcolors"
@@ -236,14 +236,32 @@ git clone https://github.com/sickill/vim-monokai.git
 #enable monokai vim color
 mkdir -p .vim/colors
 cp vim-monokai/colors/monokai.vim .vim/colors/
-cat <<EOF >> .vimrc
+mkdir -p .vim/bundle
+git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+
+cat <<EOF > .vimrc
+set nocompatible
+filetype off    " Required
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'    " Required
+
+call vundle#end()
+
+filetype plugin indent on " Required
+
 syntax enable
 colorscheme monokai
 set backspace=indent,eol,start " backspace over everything in insert mode
+
 EOF
+vim +PluginInstall +qall
+
 cd "$PREVIOUS_DIR"
 
-cat <<EOF >> ~/.bash_profile
+cat <<EOF >> $HOME/.bash_profile
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2 
 export CLICOLOR=1
