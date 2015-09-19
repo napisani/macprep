@@ -13,6 +13,7 @@
     <equal>com.jetbrains.intellij</equal>  
     <equal>com.google.android.studio</equal>
     <equal>com.jetbrains.WebStorm</equal>
+    <equal>com.github.atom</equal>
 </appdef>
 
 
