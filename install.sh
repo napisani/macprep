@@ -56,12 +56,6 @@ brew cask install iterm2
 
 echo "--> installing and personalizing git..."
 brew install git
-git config --global user.name "napisani"
-git config --global user.email "napisani@yahoo.com"
-git config --global github.user napisani 
-git config --global core.editor "vim" 
-git config --global color.ui true 
-git config --global push.default simple
 
 echo "--> installing and jenv..."
 brew tap jenv/jenv
@@ -143,7 +137,6 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 #add host entry for my local nas box
-sudo echo "192.168.1.250 nas" >> /etc/hosts
 
 #----------------------------------------------------------------
 
@@ -450,8 +443,6 @@ echo "--> Installing ssh-copy-id"
 brew install ssh-copy-id
 echo "--> Generating ssh keys"
 ssh-keygen
-echo "--> Copying key to NAS"
-ssh-copy-id -i ~/.ssh/id_rsa.pub nick@nas
 
 echo "--> Installing Maven"
 brew install maven
